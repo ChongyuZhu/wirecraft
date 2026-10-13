@@ -82,16 +82,15 @@ for author in data['authors']:
     author_html.append(f'<span>{name}<sup>{marker}</sup></span>')
 affiliations = '<div class="affiliations">' + ''.join(f'<p><sup>{i+1}</sup> {text(a)}</p>' for i,a in enumerate(data['affiliations'])) + '<p class="contribution-note">* Equal contribution</p></div>'
 
-tabs, panels = [], []
+panels = []
 for i, task in enumerate(data['tasks']):
     ident = task['id']
     if not re.fullmatch('[a-z][a-z0-9-]*', ident):
         raise ValueError('Task IDs must be lowercase slugs.')
-    tabs.append(f'<button type="button" role="tab" id="tab-{ident}" aria-controls="panel-{ident}" aria-selected="{str(i==0).lower()}" tabindex="{0 if i==0 else -1}"><span>0{i+1}</span>{text(task["title"])}</button>')
     simulation = ''
     if task.get('simulation'):
         simulation = f'<details class="simulation-example"><summary>See the parallel simulation</summary>{media(task["simulation"])}</details>'
-    panels.append(f'<div class="task-panel" id="panel-{ident}" role="tabpanel" aria-labelledby="tab-{ident}" tabindex="0"{" hidden" if i else ""}><div class="task-demo"><p class="media-tag">Physical UR5 · original playback speed</p>{media(task["media"])}</div><div class="task-copy"><p class="task-number">TASK 0{i+1}</p><h3>{text(task["eyebrow"])}</h3><p>{text(task["description"])}</p><p class="task-criterion"><strong>Success criterion</strong>{text(task["criterion"])}</p>{simulation}</div></div>')
+    panels.append(f'<article class="task-panel" id="task-{ident}" aria-labelledby="task-title-{ident}"><div class="task-copy"><div class="task-heading"><p class="task-number">TASK 0{i+1}</p><h3 id="task-title-{ident}">{text(task["title"])}</h3><p class="task-subtitle">{text(task["eyebrow"])}</p></div><p class="task-description">{text(task["description"])}</p></div><div class="task-demo"><p class="media-tag">Physical UR5 · three views · original playback speed</p>{media(task["media"])}</div><p class="task-criterion"><strong>Success criterion</strong>{text(task["criterion"])}</p>{simulation}</article>')
 
 real = list(csv.DictReader((ROOT/'content/real-robot.csv').open()))
 mixtures = ['R','R+S','R+P','R+S+P']
@@ -132,7 +131,7 @@ values = {
     'SECONDARY_VENUE':text(data['secondaryVenue']), 'AUTHORS':' '.join(author_html), 'AFFILIATIONS':affiliations,
     'GITHUB':link(data['links']['github']), 'PAPER':link(data['links']['paper']), 'PDF':asset(data['links']['localPaper']),
     'RELEASE_NOTE':text(data['releaseNote']), 'HERO_MEDIA':media(data['hero']['media'],eager=True),
-    'INTRO':text(data['intro']), 'ABSTRACT':text(data['abstract']), 'TASK_TABS':''.join(tabs), 'TASK_PANELS':''.join(panels),
+    'INTRO':text(data['intro']), 'ABSTRACT':text(data['abstract']), 'TASK_PANELS':''.join(panels),
     'METHOD_DESCRIPTION':text(data['method']['description']), 'METHOD_MEDIA':media(data['method']['media']),
     'METHOD_POINTS':''.join('<div><h3>'+text(p['title'])+'</h3><p>'+text(p['description'])+'</p></div>' for p in data['method']['points']),
     'REAL_SUMMARY':text(data['results']['realSummary']), 'REAL_RESULTS':hardware,

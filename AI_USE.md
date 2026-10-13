@@ -1,1 +1,3 @@
 2026-10-13 — OpenAI Codex (GPT-6): adapted the author-provided website template, assembled supplied paper/results/media, implemented a white theme and responsive interactions, and prepared GitHub Pages publication. Experimental images were not generated; source results and manuscript files were not modified.
+
+2026-10-13 — OpenAI Codex (GPT-6): Changed the project page to display all three task demonstrations without tabs; retained collapsible simulation examples. Assembled matching supplied handheld and wrist/side recordings using manually checked constant time offsets at original playback speed, selected insertion success02 for its clearer ending, and added five author-provided profile links. No manuscript text, results, or research implementation changed.

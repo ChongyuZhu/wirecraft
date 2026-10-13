@@ -13,31 +13,31 @@
     },
     {
       "name": "Ramy ElMallah",
-      "url": null,
+      "url": "https://www.linkedin.com/in/ramyelmallah/",
       "affiliation": 1,
       "equalContribution": true
     },
     {
       "name": "Hyegang Kim",
-      "url": null,
+      "url": "https://www.linkedin.com/in/hyegangkim/?locale=en",
       "affiliation": 1,
       "equalContribution": false
     },
     {
       "name": "Zachary Tang",
-      "url": null,
+      "url": "https://e-ndorfin.github.io/",
       "affiliation": 1,
       "equalContribution": false
     },
     {
       "name": "Jiachen Rao",
-      "url": null,
+      "url": "https://www.linkedin.com/in/jiachen-rao-b27a43233/",
       "affiliation": 1,
       "equalContribution": false
     },
     {
       "name": "Artem Arutyunov",
-      "url": null,
+      "url": "https://www.linkedin.com/in/artem-arutyunov/",
       "affiliation": 1,
       "equalContribution": false
     },
@@ -82,10 +82,10 @@
       "description": "Grasp the connector at the end of a wire, align it with a socket, and complete the insertion. Connector geometry and socket clearance control the difficulty.",
       "media": {
         "type": "video",
-        "src": "assets/media/real-insertion.mp4",
-        "alt": "A UR5 grasps a wire-attached connector and moves it into a socket on a physical task board.",
-        "caption": "Illustrative physical recording. No training mixture or checkpoint is assigned to this clip.",
-        "poster": "assets/media/real-insertion-poster.webp"
+        "src": "assets/media/real-insertion-multiview.mp4",
+        "alt": "Third-person, wrist and side views of the same physical UR5 connector insertion trial.",
+        "caption": "Third-person, wrist and side views of the same trial, aligned using motion events. No training mixture or checkpoint is assigned.",
+        "poster": "assets/media/real-insertion-multiview-poster.webp"
       },
       "criterion": "The connector tip seats in the socket. Reaching the socket neighborhood is measured separately.",
       "simulation": {
@@ -103,10 +103,10 @@
       "description": "Route a flexible wire through one or more clips. The benchmark varies the number of clips and their placement; the hardware evaluation uses one clip.",
       "media": {
         "type": "video",
-        "src": "assets/media/real-routing.mp4",
-        "alt": "A physical UR5 grasps and routes a wire into a single clip mounted on a task board.",
-        "caption": "Illustrative physical recording. No training mixture or checkpoint is assigned to this clip.",
-        "poster": "assets/media/real-routing-poster.webp"
+        "src": "assets/media/real-routing-multiview.mp4",
+        "alt": "Third-person, wrist and side views of the same physical UR5 clip routing trial.",
+        "caption": "Third-person, wrist and side views of the same trial, aligned using motion events. No training mixture or checkpoint is assigned.",
+        "poster": "assets/media/real-routing-multiview-poster.webp"
       },
       "criterion": "The wire is seated in the target clip or clips.",
       "simulation": {
@@ -124,10 +124,10 @@
       "description": "Lay a wire inside a channel along its length. Straight and curved channels test shape control; the hardware evaluation uses a straight channel.",
       "media": {
         "type": "video",
-        "src": "assets/media/real-seating.mp4",
-        "alt": "A physical UR5 picks up a green cord and seats it along a straight channel.",
-        "caption": "Illustrative physical recording. No training mixture or checkpoint is assigned to this clip.",
-        "poster": "assets/media/real-seating-poster.webp"
+        "src": "assets/media/real-seating-multiview.mp4",
+        "alt": "Third-person, wrist and side views of the same physical UR5 channel seating trial.",
+        "caption": "Third-person, wrist and side views of the same trial, aligned using motion events. No training mixture or checkpoint is assigned.",
+        "poster": "assets/media/real-seating-multiview-poster.webp"
       },
       "criterion": "More than 80% of the wire length lies inside the channel.",
       "simulation": {
