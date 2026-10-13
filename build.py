@@ -4,7 +4,6 @@ import argparse
 import csv
 from html import escape
 import json
-import math
 from pathlib import Path
 import re
 import shutil
@@ -60,13 +59,6 @@ def table(columns, rows, caption):
         body += '<tr>' + f'<th scope="row">{text(row[0])}</th>' + ''.join(f'<td>{text(c)}</td>' for c in row[1:]) + '</tr>'
     return f'<div class="results-table-wrap" role="region" aria-label="{text(caption)}" tabindex="0"><table class="results-table"><caption>{text(caption)}</caption><thead><tr>{header}</tr></thead><tbody>{body}</tbody></table></div>'
 
-def wilson(k, n):
-    z = 1.959963984540054
-    p = k/n
-    center = (p+z*z/(2*n))/(1+z*z/n)
-    half = z*math.sqrt(p*(1-p)/n+z*z/(4*n*n))/(1+z*z/n)
-    return 100*(center-half), 100*(center+half)
-
 if args.release and data['preview']:
     raise SystemExit('Set preview to false before a release build.')
 for field in ('abstract', 'affiliations', 'authors', 'tasks', 'bibtex'):
@@ -94,22 +86,29 @@ for i, task in enumerate(data['tasks']):
 
 real = list(csv.DictReader((ROOT/'content/real-robot.csv').open()))
 mixtures = ['R','R+S','R+P','R+S+P']
-task_specs = [('insertion','Connector insertion','insert'),('routing','1-clip routing','task success'),('seating','Straight-channel seating','task success')]
-charts, interval_rows = [], []
-for task_id, title, metric in task_specs:
+task_specs = [
+    ('insertion','Connector insertion','reach','Reach'),
+    ('insertion','Connector insertion','insert','Insert'),
+    ('routing','1-clip routing','task success','Task success'),
+    ('seating','Straight-channel seating','task success','Task success'),
+]
+charts = []
+for task_id, title, metric, metric_label in task_specs:
+    records = [next(r for r in real if r['task']==task_id and r['training_data']==mixture and r['metric']==metric) for mixture in mixtures]
+    best = max(int(r['successes'])/int(r['trials']) for r in records)
     bars = []
-    for i, mixture in enumerate(mixtures):
-        row = next(r for r in real if r['task']==task_id and r['training_data']==mixture and r['metric']==metric)
+    for mixture, row in zip(mixtures, records):
         k,n = int(row['successes']),int(row['trials'])
         pct = 100*k/n
         assert abs(pct-float(row['success_rate_percent'])) < 0.00001
-        low,high = wilson(k,n)
-        bars.append(f'<div class="bar-row mixture-{i}"><span class="bar-label">{text(mixture)}</span><span class="bar-track" aria-hidden="true"><span style="width:{pct:g}%"></span></span><span class="bar-value">{pct:g}% <small>{k}/{n}</small></span></div>')
-        interval_rows.append([title,mixture,f'{k}/{n}',f'{pct:g}%',f'{low:.1f}–{high:.1f}%'])
-    charts.append(f'<div class="result-chart"><h4>{title}</h4><p class="chart-subtitle">Task success · 20 trials per condition</p>{"".join(bars)}</div>')
+        is_best = k/n == best
+        best_class = ' is-best' if is_best else ''
+        best_marker = '<span class="sr-only">Highest observed rate. </span>' if is_best else ''
+        bars.append(f'<div class="bar-row{best_class}"><span class="bar-label">{text(mixture)}</span><span class="bar-track" aria-hidden="true"><span style="width:{pct:g}%"></span></span><span class="bar-value">{best_marker}{pct:g}% <small>{k}/{n}</small></span></div>')
+    charts.append(f'<div class="result-chart"><h4>{title}</h4><p class="chart-subtitle">{metric_label} · 20 trials per condition</p>{"".join(bars)}</div>')
 hardware = '<div class="hardware-charts">'+''.join(charts)+'</div>'
 hardware += '<p class="data-key"><strong>R</strong> real demonstrations <span>·</span> <strong>S</strong> scripted simulation <span>·</span> <strong>P</strong> State PPO simulation</p>'
-hardware += '<details class="result-details"><summary>Trial counts and 95% confidence intervals</summary><p>Wilson binomial intervals, calculated from the reported successes and trials. Each condition has 20 hardware trials; these intervals describe sampling uncertainty, not a paired significance test.</p>' + table(['Physical task','Training data','Successes / trials','Success rate','95% Wilson interval'],interval_rows,'Physical UR5 · ACT task success') + '</details>'
+hardware += '<p class="chart-key"><span aria-hidden="true"></span>Blue marks the highest observed rate for each metric, including ties.</p>'
 
 sim = json.loads((ROOT/'content/simulation-cross-task.json').read_text())
 sim_rows = []
@@ -118,12 +117,6 @@ for task in ('routing','seating'):
     sim_rows.append([records[0]['task_label'].capitalize()] + [f'{r["mean_percent"]:.2f} ± {r["sd_percent"]:.2f}' for r in records])
 simulation = table(['Task','State PPO','ACT','DiT VLA'],sim_rows,'Simulation · success rate (%), mean ± standard deviation')
 simulation += '<p class="result-note">ACT and DiT VLA use three evaluation seeds and the final training checkpoint, with 1,600 scripted trajectories for routing and 1,000 for seating. State PPO uses privileged state; RL results use three seeds. Per-seed rollout counts for these tasks are not specified in the paper. Values after ± are standard deviations, not confidence intervals.</p>'
-insertion = json.loads((ROOT/'content/simulation-insertion.json').read_text())
-insertion_rows = [[r['connector'],r['policy'],f'{r["reach_mean_percent"]:.2f} ± {r["reach_sd_percent"]:.2f}',f'{r["insert_mean_percent"]:.2f} ± {r["insert_sd_percent"]:.2f}'] for r in insertion['full_connector_rl_matrix']]
-insertion_table = '<details class="result-details"><summary>Results across four connector geometries</summary>'+table(['Connector','Policy','Reach (%)','Insert (%)'],insertion_rows,'Simulation · 3 mm clearance · mean ± standard deviation across three seeds')+'</details>'
-baseline_rows = [[r['policy'],f'{r["reach_mean_percent"]:.2f} ± {r["reach_sd_percent"]:.2f}',f'{r["insert_mean_percent"]:.2f} ± {r["insert_sd_percent"]:.2f}'] for r in insertion['ethernet_style_all_baselines']]
-insertion_table += '<details class="result-details"><summary>Insertion values and evaluation protocol</summary>'+table(['Policy','Reach (%)','Insert (%)'],baseline_rows,'Simulation · Ethernet-style connector · 3 mm clearance')+'<p>Reach: the held connector comes within 2 cm of the socket. Insert: the connector tip seats in the socket. RL uses three seeds. Insertion imitation-learning and VLA baselines use four evaluation seeds × 16 rollouts per checkpoint; results are the best observed among three reach-selected checkpoints, selected on evaluation rollouts. Their training budgets differ. All ± values are standard deviations.</p></details>'
-
 values = {
     'PAGE_TITLE':text(data['title']+': '+data['subtitle']), 'DESCRIPTION':text(data['intro']),
     'ROBOTS':'<meta name="robots" content="noindex, nofollow">' if data['preview'] else '',
@@ -131,14 +124,13 @@ values = {
     'SECONDARY_VENUE':text(data['secondaryVenue']), 'AUTHORS':' '.join(author_html), 'AFFILIATIONS':affiliations,
     'GITHUB':link(data['links']['github']), 'PAPER':link(data['links']['paper']), 'PDF':asset(data['links']['localPaper']),
     'RELEASE_NOTE':text(data['releaseNote']), 'HERO_MEDIA':media(data['hero']['media'],eager=True),
-    'INTRO':text(data['intro']), 'ABSTRACT':text(data['abstract']), 'TASK_PANELS':''.join(panels),
+    'TLDR':text(data['tldr']), 'ABSTRACT':text(data['abstract']), 'TASK_PANELS':''.join(panels),
     'METHOD_DESCRIPTION':text(data['method']['description']), 'METHOD_MEDIA':media(data['method']['media']),
     'METHOD_POINTS':''.join('<div><h3>'+text(p['title'])+'</h3><p>'+text(p['description'])+'</p></div>' for p in data['method']['points']),
     'REAL_SUMMARY':text(data['results']['realSummary']), 'REAL_RESULTS':hardware,
-    'REAL_PROTOCOL':text(data['results']['realProtocol']), 'SIM_RESULTS':simulation,
-    'INSERTION_FIGURE':media(data['results']['insertionMedia']), 'INSERTION_TABLE':insertion_table,
+    'SIM_RESULTS':simulation,
+    'INSERTION_FIGURE':media(data['results']['insertionMedia']),
     'SCOPE':text(data['results']['scope']), 'BIBTEX':text(data['bibtex']),
-    'REAL_CSV':asset('assets/data/real-robot-success.csv'), 'SIM_CSV':asset('assets/data/simulation-cross-task.csv'),
 }
 html = (ROOT/'templates/index.html').read_text()
 for key,value in values.items():

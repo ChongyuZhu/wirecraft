@@ -82,10 +82,10 @@
       "description": "Grasp the connector at the end of a wire, align it with a socket, and complete the insertion. Connector geometry and socket clearance control the difficulty.",
       "media": {
         "type": "video",
-        "src": "assets/media/real-insertion-multiview.mp4",
+        "src": "assets/media/real-insertion-multiview-v2.mp4",
         "alt": "Third-person, wrist and side views of the same physical UR5 connector insertion trial.",
         "caption": "Third-person, wrist and side views of the same trial, aligned using motion events. No training mixture or checkpoint is assigned.",
-        "poster": "assets/media/real-insertion-multiview-poster.webp"
+        "poster": "assets/media/real-insertion-multiview-v2-poster.webp"
       },
       "criterion": "The connector tip seats in the socket. Reaching the socket neighborhood is measured separately.",
       "simulation": {
@@ -103,10 +103,10 @@
       "description": "Route a flexible wire through one or more clips. The benchmark varies the number of clips and their placement; the hardware evaluation uses one clip.",
       "media": {
         "type": "video",
-        "src": "assets/media/real-routing-multiview.mp4",
+        "src": "assets/media/real-routing-multiview-v2.mp4",
         "alt": "Third-person, wrist and side views of the same physical UR5 clip routing trial.",
         "caption": "Third-person, wrist and side views of the same trial, aligned using motion events. No training mixture or checkpoint is assigned.",
-        "poster": "assets/media/real-routing-multiview-poster.webp"
+        "poster": "assets/media/real-routing-multiview-v2-poster.webp"
       },
       "criterion": "The wire is seated in the target clip or clips.",
       "simulation": {
@@ -124,10 +124,10 @@
       "description": "Lay a wire inside a channel along its length. Straight and curved channels test shape control; the hardware evaluation uses a straight channel.",
       "media": {
         "type": "video",
-        "src": "assets/media/real-seating-multiview.mp4",
+        "src": "assets/media/real-seating-multiview-v2.mp4",
         "alt": "Third-person, wrist and side views of the same physical UR5 channel seating trial.",
         "caption": "Third-person, wrist and side views of the same trial, aligned using motion events. No training mixture or checkpoint is assigned.",
-        "poster": "assets/media/real-seating-multiview-poster.webp"
+        "poster": "assets/media/real-seating-multiview-v2-poster.webp"
       },
       "criterion": "More than 80% of the wire length lies inside the channel.",
       "simulation": {
@@ -174,5 +174,6 @@
     "scope": "The hardware study uses a UR5 with one fixture configuration per task and narrower randomization than simulation. Training-set size changes with data mixture, so these results do not isolate source diversity from data volume. They do not measure zero-shot transfer."
   },
   "bibtex": "@misc{zhu2026wirecraft,\n  title = {WireCraft: A Simulation Benchmark for Industrial DLO Manipulation},\n  author = {Chongyu Zhu and Ramy ElMallah and Hyegang Kim and Zachary Tang and Jiachen Rao and Artem Arutyunov and Seungyeon Ha and Chi-Guhn Lee},\n  year = {2026},\n  eprint = {2606.18097},\n  archivePrefix = {arXiv},\n  primaryClass = {cs.RO},\n  url = {https://arxiv.org/abs/2606.18097}\n}",
-  "releaseNote": "Research code is planned for release in early November 2026, before CoRL. Code and dataset download links will be added to the project repository."
+  "releaseNote": "Research code is planned for release in early November 2026, before CoRL. Code and dataset download links will be added to the project repository.",
+  "tldr": "WireCraft benchmarks connector insertion, clip routing, and channel seating in configurable simulation. Privileged state policies exceed 82% success in a representative setting of each task family; image-based policies lag behind. Adding simulated demonstrations improves physical UR5 task success by 15–65 percentage points in the best mixture for each task."
 }

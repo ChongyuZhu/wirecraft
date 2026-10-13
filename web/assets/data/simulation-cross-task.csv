@@ -1,7 +1,0 @@
-task,policy,mean_success_percent,standard_deviation_percent,seeds,rollouts_per_seed
-1-clip routing,State PPO,95.32,0.93,3,not reported
-1-clip routing,ACT,64.06,11.16,3,not reported
-1-clip routing,DiT VLA,39.06,16.16,3,not reported
-straight-channel seating,State PPO,82.33,0.31,3,not reported
-straight-channel seating,ACT,18.8,7.65,3,not reported
-straight-channel seating,DiT VLA,15.62,12.88,3,not reported

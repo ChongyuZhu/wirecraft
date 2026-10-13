@@ -32,8 +32,8 @@
       <div class="hero-figure">@@HERO_MEDIA@@</div>
     </section>
     <section class="overview shell section-space" id="overview" aria-labelledby="overview-title">
-      <div class="section-heading"><p class="eyebrow">01 / Overview</p><h2 id="overview-title">Learning to handle<br> what won't hold still.</h2><p class="heading-note">DLO: deformable linear object</p></div>
-      <div class="overview-copy"><p class="lead">@@INTRO@@</p><details class="abstract-details"><summary>Read the paper abstract</summary><p class="abstract">@@ABSTRACT@@</p></details></div>
+      <div class="section-heading"><p class="eyebrow">01 / Overview</p><h2 id="overview-title">TL;DR</h2></div>
+      <div class="overview-copy"><p class="lead">@@TLDR@@</p><div class="abstract-block"><h3>Abstract</h3><p class="abstract">@@ABSTRACT@@</p></div></div>
     </section>
     <section class="tasks section-space" id="tasks" aria-labelledby="tasks-title">
       <div class="shell"><div class="section-heading horizontal"><div><p class="eyebrow">02 / Task families</p><h2 id="tasks-title">Three ways to put a wire to work.</h2></div><p class="section-aside">Watch the physical robot.<br> Inspect the simulation.</p></div>
@@ -47,19 +47,16 @@
     </section>
     <section class="results shell section-space" id="results" aria-labelledby="results-title">
       <div class="section-heading horizontal"><div><p class="eyebrow">04 / Evaluation</p><h2 id="results-title">What the benchmark reveals.</h2></div><a class="text-link" href="#physical-results">Physical UR5 ↓</a></div>
-      <article class="result-block" id="physical-results">
-        <div class="result-heading"><p class="result-label">Physical robot</p><h3>Simulation data helps on the UR5.</h3></div>
-        <p class="results-summary">@@REAL_SUMMARY@@</p>
-        @@REAL_RESULTS@@
-        <p class="result-note">@@REAL_PROTOCOL@@</p>
-        <a class="text-link download-link" href="@@REAL_CSV@@" download>Download hardware results (CSV) ↓</a>
-      </article>
       <article class="result-block" id="simulation-results">
         <div class="result-heading"><p class="result-label">Simulation</p><h3>Reaching the socket is only part of insertion.</h3></div>
         <p class="results-summary">Privileged state policies solve the insertion task. Image-based policies lose success between reaching the socket and seating the connector, where alignment and contact matter.</p>
         <div class="insertion-figure">@@INSERTION_FIGURE@@</div>
-        @@INSERTION_TABLE@@
-        <div class="cross-task"><h3>The gap extends to routing and seating.</h3><p class="result-note">Action Chunking with Transformers (ACT) and a Diffusion Transformer vision-language-action policy (DiT VLA) remain below State Proximal Policy Optimization (PPO) on these simulated tasks.</p>@@SIM_RESULTS@@<a class="text-link download-link" href="@@SIM_CSV@@" download>Download routing and seating results (CSV) ↓</a></div>
+        <div class="cross-task"><h3>The gap extends to routing and seating.</h3><p class="result-note">Action Chunking with Transformers (ACT) and a Diffusion Transformer vision-language-action policy (DiT VLA) remain below State Proximal Policy Optimization (PPO) on these simulated tasks.</p>@@SIM_RESULTS@@</div>
+      </article>
+      <article class="result-block" id="physical-results">
+        <div class="result-heading"><p class="result-label">Physical robot</p><h3>Simulation data helps on the UR5.</h3></div>
+        <p class="results-summary">@@REAL_SUMMARY@@</p>
+        @@REAL_RESULTS@@
       </article>
       <aside class="scope-note"><h3>What these results cover</h3><p>@@SCOPE@@</p></aside>
     </section>
