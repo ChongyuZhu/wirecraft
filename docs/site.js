@@ -1,4 +1,9 @@
 // Optional progressive enhancement: the published page is static HTML.
+document.querySelectorAll('details.simulation-demo').forEach(details => {
+  details.addEventListener('toggle', () => {
+    if (!details.open) details.querySelector('video').pause();
+  });
+});
 const copyButton = document.getElementById('copy-citation');
 copyButton.addEventListener('click', async () => {
   const code = document.getElementById('bibtex');
