@@ -19,3 +19,5 @@ sup{font-size:.68em;vertical-align:super;line-height:0;margin-left:2px}.authors>
 
 /* Overview and metric-specific result emphasis. */
 .overview{grid-template-columns:180px minmax(0,1fr);gap:65px}.abstract-block{margin-top:30px;padding-top:24px;border-top:1px solid var(--line)}.abstract-block h3{font-size:22px;font-weight:550;letter-spacing:-.4px}.overview-copy .abstract{margin-top:13px;font-size:15px;line-height:1.85}.chart-key{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--muted);margin-top:7px}.chart-key>span{width:12px;height:9px;background:#2563eb;border-radius:2px;flex-shrink:0}@media(max-width:760px){.overview{grid-template-columns:1fr;gap:22px}.hardware-charts{grid-template-columns:1fr}.abstract-block{margin-top:24px}}
+
+.hardware-charts{grid-template-columns:1.65fr 1fr 1fr;column-gap:22px;align-items:start}.result-chart img{width:100%;height:auto}.result-chart .chart-subtitle{margin-bottom:3px}@media(max-width:900px){.hardware-charts{grid-template-columns:1fr}.result-chart{max-width:760px}.result-chart:not(:first-child){max-width:500px}}

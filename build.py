@@ -86,26 +86,19 @@ for i, task in enumerate(data['tasks']):
 
 real = list(csv.DictReader((ROOT/'content/real-robot.csv').open()))
 mixtures = ['R','R+S','R+P','R+S+P']
-task_specs = [
-    ('insertion','Connector insertion','reach','Reach'),
-    ('insertion','Connector insertion','insert','Insert'),
-    ('routing','1-clip routing','task success','Task success'),
-    ('seating','Straight-channel seating','task success','Task success'),
-]
+task_specs = [('insertion','Connector insertion'),('routing','1-clip routing'),('seating','Straight-channel seating')]
 charts = []
-for task_id, title, metric, metric_label in task_specs:
-    records = [next(r for r in real if r['task']==task_id and r['training_data']==mixture and r['metric']==metric) for mixture in mixtures]
-    best = max(int(r['successes'])/int(r['trials']) for r in records)
-    bars = []
-    for mixture, row in zip(mixtures, records):
+for task_id, title in task_specs:
+    records = [r for r in real if r['task']==task_id]
+    descriptions = []
+    for row in records:
         k,n = int(row['successes']),int(row['trials'])
         pct = 100*k/n
         assert abs(pct-float(row['success_rate_percent'])) < 0.00001
-        is_best = k/n == best
-        best_class = ' is-best' if is_best else ''
-        best_marker = '<span class="sr-only">Highest observed rate. </span>' if is_best else ''
-        bars.append(f'<div class="bar-row{best_class}"><span class="bar-label">{text(mixture)}</span><span class="bar-track" aria-hidden="true"><span style="width:{pct:g}%"></span></span><span class="bar-value">{best_marker}{pct:g}% <small>{k}/{n}</small></span></div>')
-    charts.append(f'<div class="result-chart"><h4>{title}</h4><p class="chart-subtitle">{metric_label} · 20 trials per condition</p>{"".join(bars)}</div>')
+        descriptions.append(f'{row["training_data"]} {row["metric"]}: {pct:g}% ({k}/{n})')
+    alt = title + '. ' + '; '.join(descriptions) + '. Blue marks each metric’s highest rate, including ties.'
+    src = asset(f'assets/media/hardware-{task_id}.svg')
+    charts.append(f'<figure class="result-chart"><h4>{title}</h4><p class="chart-subtitle">20 trials per condition</p><img src="{src}" alt="{text(alt)}" loading="lazy" decoding="async"></figure>')
 hardware = '<div class="hardware-charts">'+''.join(charts)+'</div>'
 hardware += '<p class="data-key"><strong>R</strong> real demonstrations <span>·</span> <strong>S</strong> scripted simulation <span>·</span> <strong>P</strong> State PPO simulation</p>'
 hardware += '<p class="chart-key"><span aria-hidden="true"></span>Blue marks the highest observed rate for each metric, including ties.</p>'

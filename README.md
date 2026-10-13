@@ -22,7 +22,7 @@ Edit `content/` for website text and reported results, `templates/index.html` fo
 
 ## Results and media
 
-Simulation results appear before the physical UR5 results. The overview presents a TL;DR followed by the full abstract. Hardware charts show insertion reach and insertion success separately, alongside routing and seating, with counts from 20 trials per condition. Blue marks the highest observed rate for each metric, including ties. Detailed source data remain in `content/`; the introduction page has no CSV download links or expanded result tables.
+Simulation results appear before the physical UR5 results. The overview presents a TL;DR followed by the full abstract. Three task charts pair hatched reach and solid insert bars within connector insertion, alongside routing and seating, with counts from 20 trials per condition. Blue marks the highest observed rate for each metric, including ties. Detailed source data remain in `content/`; the introduction page has no CSV download links or expanded result tables.
 
 Task recordings are illustrative examples, without an assigned training mixture or checkpoint. The three task sections are visible in sequence; optional simulation recordings can be expanded. Physical videos place the same trial’s handheld, wrist, and side views in three horizontal 640×480 images. The handheld recording uses a centered 4:3 crop; the wrist and side views retain their full camera frames. Constant timing offsets were estimated from motion events (approximately ±0.25 s) and checked with 12 keyframes from the final videos, with no playback-speed change.
 
