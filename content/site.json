@@ -90,10 +90,10 @@
       "criterion": "The connector tip seats in the socket. Reaching the socket neighborhood is measured separately.",
       "simulation": {
         "type": "video",
-        "src": "assets/media/sim-insertion.mp4",
-        "alt": "Parallel simulated environments for connector insertion.",
-        "caption": "Parallel simulation overview. This is a separate recording from the physical example.",
-        "poster": "assets/media/sim-insertion-poster.webp"
+        "src": "assets/media/sim-insertion-presentation.mp4",
+        "alt": "Synchronized wrist and side camera views of the insertion demo from the WireCraft presentation.",
+        "caption": "Synchronized wrist and side camera views. These demos show the general WireCraft simulation environment, without real-to-sim calibration or matching to our physical UR5 setup.",
+        "poster": "assets/media/sim-insertion-presentation-poster.webp"
       }
     },
     {
@@ -111,10 +111,10 @@
       "criterion": "The wire is seated in the target clip or clips.",
       "simulation": {
         "type": "video",
-        "src": "assets/media/sim-routing.mp4",
-        "alt": "Parallel simulated environments for clip routing.",
-        "caption": "Parallel simulation overview. This is a separate recording from the physical example.",
-        "poster": "assets/media/sim-routing-poster.webp"
+        "src": "assets/media/sim-routing-presentation.mp4",
+        "alt": "Synchronized wrist and side camera views of the routing demo from the WireCraft presentation.",
+        "caption": "Synchronized wrist and side camera views. These demos show the general WireCraft simulation environment, without real-to-sim calibration or matching to our physical UR5 setup.",
+        "poster": "assets/media/sim-routing-presentation-poster.webp"
       }
     },
     {
@@ -132,10 +132,10 @@
       "criterion": "More than 80% of the wire length lies inside the channel.",
       "simulation": {
         "type": "video",
-        "src": "assets/media/sim-seating.mp4",
-        "alt": "Parallel simulated environments for channel seating.",
-        "caption": "Parallel simulation overview. This is a separate recording from the physical example.",
-        "poster": "assets/media/sim-seating-poster.webp"
+        "src": "assets/media/sim-seating-presentation.mp4",
+        "alt": "Synchronized wrist and side camera views of the seating demo from the WireCraft presentation.",
+        "caption": "Synchronized wrist and side camera views. These demos show the general WireCraft simulation environment, without real-to-sim calibration or matching to our physical UR5 setup.",
+        "poster": "assets/media/sim-seating-presentation-poster.webp"
       }
     }
   ],

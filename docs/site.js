@@ -1,10 +1,4 @@
 // Optional progressive enhancement: the published page is static HTML.
-// Pause supplemental recordings when their disclosure is collapsed.
-document.querySelectorAll('details').forEach(details => {
-  details.addEventListener('toggle', () => {
-    if (!details.open) details.querySelectorAll('video').forEach(video => video.pause());
-  });
-});
 const copyButton = document.getElementById('copy-citation');
 copyButton.addEventListener('click', async () => {
   const code = document.getElementById('bibtex');

@@ -81,7 +81,7 @@ for i, task in enumerate(data['tasks']):
         raise ValueError('Task IDs must be lowercase slugs.')
     simulation = ''
     if task.get('simulation'):
-        simulation = f'<details class="simulation-example"><summary>See the parallel simulation</summary>{media(task["simulation"])}</details>'
+        simulation = f'<div class="simulation-demo"><p class="media-tag">General simulation environment · synchronized camera views</p>{media(task["simulation"])}</div>'
     panels.append(f'<article class="task-panel" id="task-{ident}" aria-labelledby="task-title-{ident}"><div class="task-copy"><div class="task-heading"><p class="task-number">TASK 0{i+1}</p><h3 id="task-title-{ident}">{text(task["title"])}</h3><p class="task-subtitle">{text(task["eyebrow"])}</p></div><p class="task-description">{text(task["description"])}</p></div><div class="task-demo"><p class="media-tag">Physical UR5 · three views · original playback speed</p>{media(task["media"])}</div><p class="task-criterion"><strong>Success criterion</strong>{text(task["criterion"])}</p>{simulation}</article>')
 
 real = list(csv.DictReader((ROOT/'content/real-robot.csv').open()))
