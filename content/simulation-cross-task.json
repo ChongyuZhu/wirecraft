@@ -1,0 +1,91 @@
+{
+  "title": "Simulation 1-clip routing and straight-channel seating",
+  "unit": "percent",
+  "uncertainty": "standard deviation across seeds, not confidence intervals",
+  "rows": [
+    {
+      "task": "routing",
+      "task_label": "1-clip routing",
+      "policy": "State PPO",
+      "mean_percent": 95.32,
+      "sd_percent": 0.93,
+      "seeds": 3,
+      "rollouts_per_seed": null,
+      "source": "CoRL2026_WireSortingBenchmark_camera_ready.tex:420"
+    },
+    {
+      "task": "routing",
+      "task_label": "1-clip routing",
+      "policy": "ACT",
+      "mean_percent": 64.06,
+      "sd_percent": 11.16,
+      "seeds": 3,
+      "rollouts_per_seed": null,
+      "source": "CoRL2026_WireSortingBenchmark_camera_ready.tex:420"
+    },
+    {
+      "task": "routing",
+      "task_label": "1-clip routing",
+      "policy": "DiT VLA",
+      "mean_percent": 39.06,
+      "sd_percent": 16.16,
+      "seeds": 3,
+      "rollouts_per_seed": null,
+      "source": "CoRL2026_WireSortingBenchmark_camera_ready.tex:420"
+    },
+    {
+      "task": "seating",
+      "task_label": "straight-channel seating",
+      "policy": "State PPO",
+      "mean_percent": 82.33,
+      "sd_percent": 0.31,
+      "seeds": 3,
+      "rollouts_per_seed": null,
+      "source": "CoRL2026_WireSortingBenchmark_camera_ready.tex:421"
+    },
+    {
+      "task": "seating",
+      "task_label": "straight-channel seating",
+      "policy": "ACT",
+      "mean_percent": 18.8,
+      "sd_percent": 7.65,
+      "seeds": 3,
+      "rollouts_per_seed": null,
+      "source": "CoRL2026_WireSortingBenchmark_camera_ready.tex:421"
+    },
+    {
+      "task": "seating",
+      "task_label": "straight-channel seating",
+      "policy": "DiT VLA",
+      "mean_percent": 15.62,
+      "sd_percent": 12.88,
+      "seeds": 3,
+      "rollouts_per_seed": null,
+      "source": "CoRL2026_WireSortingBenchmark_camera_ready.tex:421"
+    }
+  ],
+  "protocol": {
+    "State_PPO": {
+      "seeds": 3,
+      "seed_type": "manuscript says seeds, without explicitly distinguishing training vs evaluation",
+      "source": "CoRL2026_WireSortingBenchmark_camera_ready.tex:977"
+    },
+    "ACT_DiT_VLA": {
+      "evaluation_seeds": 3,
+      "training_seed": 1000,
+      "checkpoint_selection": "final training checkpoint",
+      "ACT_training_steps": 100000,
+      "DiT_VLA_training_steps": 300000,
+      "scripted_demonstration_trajectories": {
+        "routing": 1600,
+        "seating": 1000
+      },
+      "source": "CoRL2026_WireSortingBenchmark_camera_ready.tex:1191-1197"
+    },
+    "rollouts_per_seed": null,
+    "denominator_status": "Neither current manuscript nor curated simulation_act_dit_vla.csv explicitly reports per-seed rollout count; no denominator inferred."
+  },
+  "source": "CoRL2026_WireSortingBenchmark_camera_ready.tex:409,418-421",
+  "supporting_data": "camera_ready_materials/2026-10-12/results/simulation_act_dit_vla.csv",
+  "note": "These ACT/DiT VLA results use three evaluation seeds. Connector-insertion IL/VLA results elsewhere use four evaluation seeds with 16 rollouts each."
+}

@@ -1,0 +1,251 @@
+{
+  "title": "Simulation connector-insertion results",
+  "setting": "Deformable-wire connector insertion with 3 mm socket clearance",
+  "unit": "percent",
+  "uncertainty": "standard deviation across seeds, not confidence intervals",
+  "metrics": {
+    "reach": "Gripper-held connector comes within 2 cm of the socket",
+    "insert": "Connector tip seats in the socket"
+  },
+  "full_connector_rl_matrix": [
+    {
+      "connector": "Cylinder",
+      "policy": "State PPO",
+      "reach_mean_percent": 95,
+      "reach_sd_percent": 1.25,
+      "insert_mean_percent": 93.75,
+      "insert_sd_percent": 1.25,
+      "seeds": 3,
+      "rollouts_per_seed": null,
+      "source": "CoRL2026_WireSortingBenchmark_camera_ready.tex:383-384"
+    },
+    {
+      "connector": "Cylinder",
+      "policy": "SACfD",
+      "reach_mean_percent": 97.27,
+      "reach_sd_percent": 1.06,
+      "insert_mean_percent": 85.55,
+      "insert_sd_percent": 8.68,
+      "seeds": 3,
+      "rollouts_per_seed": null,
+      "source": "CoRL2026_WireSortingBenchmark_camera_ready.tex:383-384"
+    },
+    {
+      "connector": "Cylinder",
+      "policy": "Vision PPO",
+      "reach_mean_percent": 68.07,
+      "reach_sd_percent": 6.02,
+      "insert_mean_percent": 41.49,
+      "insert_sd_percent": 1.32,
+      "seeds": 3,
+      "rollouts_per_seed": null,
+      "source": "CoRL2026_WireSortingBenchmark_camera_ready.tex:383-384"
+    },
+    {
+      "connector": "Cuboid",
+      "policy": "State PPO",
+      "reach_mean_percent": 97.08,
+      "reach_sd_percent": 1.44,
+      "insert_mean_percent": 95,
+      "insert_sd_percent": 3.75,
+      "seeds": 3,
+      "rollouts_per_seed": null,
+      "source": "CoRL2026_WireSortingBenchmark_camera_ready.tex:387-388"
+    },
+    {
+      "connector": "Cuboid",
+      "policy": "SACfD",
+      "reach_mean_percent": 96.7,
+      "reach_sd_percent": 1.06,
+      "insert_mean_percent": 93.06,
+      "insert_sd_percent": 6.46,
+      "seeds": 3,
+      "rollouts_per_seed": null,
+      "source": "CoRL2026_WireSortingBenchmark_camera_ready.tex:387-388"
+    },
+    {
+      "connector": "Cuboid",
+      "policy": "Vision PPO",
+      "reach_mean_percent": 41.67,
+      "reach_sd_percent": 4.73,
+      "insert_mean_percent": 6.25,
+      "insert_sd_percent": 3.31,
+      "seeds": 3,
+      "rollouts_per_seed": null,
+      "source": "CoRL2026_WireSortingBenchmark_camera_ready.tex:387-388"
+    },
+    {
+      "connector": "Ethernet-style",
+      "policy": "State PPO",
+      "reach_mean_percent": 95.86,
+      "reach_sd_percent": 1.93,
+      "insert_mean_percent": 95.86,
+      "insert_sd_percent": 1.93,
+      "seeds": 3,
+      "rollouts_per_seed": null,
+      "source": "CoRL2026_WireSortingBenchmark_camera_ready.tex:391-392"
+    },
+    {
+      "connector": "Ethernet-style",
+      "policy": "SACfD",
+      "reach_mean_percent": 98.05,
+      "reach_sd_percent": 1.05,
+      "insert_mean_percent": 92.4,
+      "insert_sd_percent": 5.91,
+      "seeds": 3,
+      "rollouts_per_seed": null,
+      "source": "CoRL2026_WireSortingBenchmark_camera_ready.tex:391-392"
+    },
+    {
+      "connector": "Ethernet-style",
+      "policy": "Vision PPO",
+      "reach_mean_percent": 51.63,
+      "reach_sd_percent": 4.82,
+      "insert_mean_percent": 17.74,
+      "insert_sd_percent": 1.21,
+      "seeds": 3,
+      "rollouts_per_seed": null,
+      "source": "CoRL2026_WireSortingBenchmark_camera_ready.tex:391-392"
+    },
+    {
+      "connector": "DisplayPort",
+      "policy": "State PPO",
+      "reach_mean_percent": 95,
+      "reach_sd_percent": 1.25,
+      "insert_mean_percent": 92.92,
+      "insert_sd_percent": 3.15,
+      "seeds": 3,
+      "rollouts_per_seed": null,
+      "source": "CoRL2026_WireSortingBenchmark_camera_ready.tex:395-396"
+    },
+    {
+      "connector": "DisplayPort",
+      "policy": "SACfD",
+      "reach_mean_percent": 95.62,
+      "reach_sd_percent": 10.58,
+      "insert_mean_percent": 77.43,
+      "insert_sd_percent": 6.17,
+      "seeds": 3,
+      "rollouts_per_seed": null,
+      "source": "CoRL2026_WireSortingBenchmark_camera_ready.tex:395-396"
+    },
+    {
+      "connector": "DisplayPort",
+      "policy": "Vision PPO",
+      "reach_mean_percent": 34.01,
+      "reach_sd_percent": 5.73,
+      "insert_mean_percent": 3.32,
+      "insert_sd_percent": 1.45,
+      "seeds": 3,
+      "rollouts_per_seed": null,
+      "source": "CoRL2026_WireSortingBenchmark_camera_ready.tex:395-396"
+    }
+  ],
+  "ethernet_style_all_baselines": [
+    {
+      "connector": "Ethernet-style",
+      "policy": "State PPO",
+      "reach_mean_percent": 95.86,
+      "reach_sd_percent": 1.93,
+      "insert_mean_percent": 95.86,
+      "insert_sd_percent": 1.93,
+      "seeds": 3,
+      "rollouts_per_seed": null,
+      "source": "CoRL2026_WireSortingBenchmark_camera_ready.tex:391-392"
+    },
+    {
+      "connector": "Ethernet-style",
+      "policy": "SACfD",
+      "reach_mean_percent": 98.05,
+      "reach_sd_percent": 1.05,
+      "insert_mean_percent": 92.4,
+      "insert_sd_percent": 5.91,
+      "seeds": 3,
+      "rollouts_per_seed": null,
+      "source": "CoRL2026_WireSortingBenchmark_camera_ready.tex:391-392"
+    },
+    {
+      "connector": "Ethernet-style",
+      "policy": "Vision PPO",
+      "reach_mean_percent": 51.63,
+      "reach_sd_percent": 4.82,
+      "insert_mean_percent": 17.74,
+      "insert_sd_percent": 1.21,
+      "seeds": 3,
+      "rollouts_per_seed": null,
+      "source": "CoRL2026_WireSortingBenchmark_camera_ready.tex:391-392"
+    },
+    {
+      "connector": "Ethernet-style",
+      "policy": "ACT",
+      "reach_mean_percent": 60.94,
+      "reach_sd_percent": 11.16,
+      "insert_mean_percent": 29.69,
+      "insert_sd_percent": 9.24,
+      "seeds": 4,
+      "rollouts_per_seed": 16,
+      "rollouts_per_checkpoint": 64,
+      "selected_checkpoint_steps": 100000,
+      "source": "CoRL2026_WireSortingBenchmark_camera_ready.tex:1170"
+    },
+    {
+      "connector": "Ethernet-style",
+      "policy": "Diffusion Policy",
+      "reach_mean_percent": 37.5,
+      "reach_sd_percent": 9.88,
+      "insert_mean_percent": 20.31,
+      "insert_sd_percent": 6.81,
+      "seeds": 4,
+      "rollouts_per_seed": 16,
+      "rollouts_per_checkpoint": 64,
+      "selected_checkpoint_steps": 200000,
+      "source": "CoRL2026_WireSortingBenchmark_camera_ready.tex:1174"
+    },
+    {
+      "connector": "Ethernet-style",
+      "policy": "DiT VLA",
+      "reach_mean_percent": 10.94,
+      "reach_sd_percent": 2.71,
+      "insert_mean_percent": 3.13,
+      "insert_sd_percent": 3.13,
+      "seeds": 4,
+      "rollouts_per_seed": 16,
+      "rollouts_per_checkpoint": 64,
+      "selected_checkpoint_steps": 200000,
+      "source": "CoRL2026_WireSortingBenchmark_camera_ready.tex:1178"
+    },
+    {
+      "connector": "Ethernet-style",
+      "policy": "π0.5",
+      "reach_mean_percent": 6.25,
+      "reach_sd_percent": 4.42,
+      "insert_mean_percent": 0,
+      "insert_sd_percent": 0,
+      "seeds": 4,
+      "rollouts_per_seed": 16,
+      "rollouts_per_checkpoint": 64,
+      "selected_checkpoint_steps": 20000,
+      "source": "CoRL2026_WireSortingBenchmark_camera_ready.tex:1181"
+    }
+  ],
+  "protocol": {
+    "RL": {
+      "seeds": 3,
+      "seed_type": "manuscript says seeds, without explicitly distinguishing training vs evaluation",
+      "rollouts_per_seed": null,
+      "denominator_status": "Not explicitly reported in current manuscript; not inferred from rounded rates or training environment counts",
+      "source": "CoRL2026_WireSortingBenchmark_camera_ready.tex:977"
+    },
+    "IL_VLA": {
+      "seeds": 4,
+      "rollouts_per_seed": 16,
+      "rollouts_per_checkpoint": 64,
+      "evaluation_horizon_simulator_steps": 800,
+      "training_dataset_trajectories": 1000,
+      "checkpoint_selection": "Best observed among three checkpoints retained by reach success on evaluation rollouts themselves; not held-out validation selection",
+      "source": "CoRL2026_WireSortingBenchmark_camera_ready.tex:1111,1134,1139,1162-1182"
+    }
+  },
+  "source": "CoRL2026_WireSortingBenchmark_camera_ready.tex:345,337,382-396",
+  "note": "IL/VLA insertion uses four evaluation seeds; RL results use three seeds. Do not label all results as averaged over the same seed or rollout count."
+}

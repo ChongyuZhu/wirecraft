@@ -1,0 +1,178 @@
+{
+  "preview": false,
+  "title": "WireCraft",
+  "subtitle": "A Simulation Benchmark for Industrial DLO Manipulation",
+  "venue": "CoRL 2026 · Spotlight",
+  "secondaryVenue": "Also presented as an oral at the IROS 2026 DOM-R3 Workshop",
+  "authors": [
+    {
+      "name": "Chongyu Zhu",
+      "url": "https://chongyuzhu.com/",
+      "affiliation": 1,
+      "equalContribution": true
+    },
+    {
+      "name": "Ramy ElMallah",
+      "url": null,
+      "affiliation": 1,
+      "equalContribution": true
+    },
+    {
+      "name": "Hyegang Kim",
+      "url": null,
+      "affiliation": 1,
+      "equalContribution": false
+    },
+    {
+      "name": "Zachary Tang",
+      "url": null,
+      "affiliation": 1,
+      "equalContribution": false
+    },
+    {
+      "name": "Jiachen Rao",
+      "url": null,
+      "affiliation": 1,
+      "equalContribution": false
+    },
+    {
+      "name": "Artem Arutyunov",
+      "url": null,
+      "affiliation": 1,
+      "equalContribution": false
+    },
+    {
+      "name": "Seungyeon Ha",
+      "url": null,
+      "affiliation": 2,
+      "equalContribution": false
+    },
+    {
+      "name": "Chi-Guhn Lee",
+      "url": "https://cglee.mie.utoronto.ca/",
+      "affiliation": 1,
+      "equalContribution": false
+    }
+  ],
+  "affiliations": [
+    "Department of Mechanical and Industrial Engineering, University of Toronto, Canada",
+    "CREFLE Inc., Seongnam, Republic of Korea"
+  ],
+  "links": {
+    "paper": "https://arxiv.org/abs/2606.18097",
+    "pdf": "https://arxiv.org/pdf/2606.18097",
+    "github": "https://github.com/WireManip/WireCraft",
+    "localPaper": "assets/paper/wirecraft-camera-ready.pdf"
+  },
+  "intro": "A wire bends, drags, and catches on the fixtures around it. WireCraft studies how robots handle these interactions through connector insertion, clip routing, and channel seating. The benchmark combines configurable simulation tasks with demonstrations and evaluation on a physical UR5.",
+  "abstract": "Deformable Linear Objects (DLOs), such as wires and cables, are central to industrial assembly. Unlike rigid objects, whose state is captured by a 6-DoF pose, DLOs have an infinite-dimensional configuration space and deform continuously under contact with grippers, fixtures, and the workspace, making them a demanding benchmark for general dexterous manipulation. Despite their importance, policy development and comparison remain difficult: existing benchmarks are often tied to specific hardware setups, lack modular and customizable task assets, or study generic deformable-object tasks without the fixtures relevant to real-world industrial wire manipulation. Few benchmarks align simulation, real-world data, and shared evaluation protocols. To bridge this gap, we introduce WireCraft, a simulation benchmark for industrial DLO manipulation with configurable difficulty and assets, spanning three task families: connector insertion, clip routing, and channel seating. It supports two complementary DLO physics models, articulated and deformable, and the released trajectories come from both simulation and a physical UR5. We benchmark reinforcement learning (RL), imitation learning (IL), and vision-language-action (VLA) policies under shared metrics. Privileged state-based RL solves a representative setting in each task family with over 82% success, confirming the tasks are well-posed. Image-based policies remain less successful across the evaluated tasks, with ACT and DiT VLA falling below privileged State PPO. On a physical UR5, supplementing real demonstrations with simulated data improves success by 15–65 percentage points in the best-performing mixture for each task. These results indicate that industrial DLO manipulation, though tractable under privileged state, remains an open challenge for current vision-based learning.",
+  "hero": {
+    "media": {
+      "type": "image",
+      "src": "assets/media/overview.webp",
+      "alt": "WireCraft overview showing connector insertion, clip routing, and channel seating in simulation, with physical UR5 examples underneath.",
+      "caption": "Three task families, two wire representations, and experiments in simulation and on a physical UR5. Select an image to view it at full size."
+    }
+  },
+  "tasks": [
+    {
+      "id": "insertion",
+      "title": "Connector insertion",
+      "eyebrow": "Grasp. Align. Insert.",
+      "description": "Grasp the connector at the end of a wire, align it with a socket, and complete the insertion. Connector geometry and socket clearance control the difficulty.",
+      "media": {
+        "type": "video",
+        "src": "assets/media/real-insertion.mp4",
+        "alt": "A UR5 grasps a wire-attached connector and moves it into a socket on a physical task board.",
+        "caption": "Illustrative physical recording. No training mixture or checkpoint is assigned to this clip.",
+        "poster": "assets/media/real-insertion-poster.webp"
+      },
+      "criterion": "The connector tip seats in the socket. Reaching the socket neighborhood is measured separately.",
+      "simulation": {
+        "type": "video",
+        "src": "assets/media/sim-insertion.mp4",
+        "alt": "Parallel simulated environments for connector insertion.",
+        "caption": "Parallel simulation overview. This is a separate recording from the physical example.",
+        "poster": "assets/media/sim-insertion-poster.webp"
+      }
+    },
+    {
+      "id": "routing",
+      "title": "Clip routing",
+      "eyebrow": "Guide the wire through the clip.",
+      "description": "Route a flexible wire through one or more clips. The benchmark varies the number of clips and their placement; the hardware evaluation uses one clip.",
+      "media": {
+        "type": "video",
+        "src": "assets/media/real-routing.mp4",
+        "alt": "A physical UR5 grasps and routes a wire into a single clip mounted on a task board.",
+        "caption": "Illustrative physical recording. No training mixture or checkpoint is assigned to this clip.",
+        "poster": "assets/media/real-routing-poster.webp"
+      },
+      "criterion": "The wire is seated in the target clip or clips.",
+      "simulation": {
+        "type": "video",
+        "src": "assets/media/sim-routing.mp4",
+        "alt": "Parallel simulated environments for clip routing.",
+        "caption": "Parallel simulation overview. This is a separate recording from the physical example.",
+        "poster": "assets/media/sim-routing-poster.webp"
+      }
+    },
+    {
+      "id": "seating",
+      "title": "Channel seating",
+      "eyebrow": "Make the wire follow the channel.",
+      "description": "Lay a wire inside a channel along its length. Straight and curved channels test shape control; the hardware evaluation uses a straight channel.",
+      "media": {
+        "type": "video",
+        "src": "assets/media/real-seating.mp4",
+        "alt": "A physical UR5 picks up a green cord and seats it along a straight channel.",
+        "caption": "Illustrative physical recording. No training mixture or checkpoint is assigned to this clip.",
+        "poster": "assets/media/real-seating-poster.webp"
+      },
+      "criterion": "More than 80% of the wire length lies inside the channel.",
+      "simulation": {
+        "type": "video",
+        "src": "assets/media/sim-seating.mp4",
+        "alt": "Parallel simulated environments for channel seating.",
+        "caption": "Parallel simulation overview. This is a separate recording from the physical example.",
+        "poster": "assets/media/sim-seating-poster.webp"
+      }
+    }
+  ],
+  "method": {
+    "description": "Built on Isaac Sim 4.5 and Isaac Lab 2.2.1, WireCraft combines industrial task fixtures with articulated rigid-body and finite-element deformable wire models. A shared dataset schema connects simulated and physical demonstrations to policy training.",
+    "media": {
+      "type": "image",
+      "src": "assets/media/benchmark.webp",
+      "alt": "WireCraft architecture: simulation engine, industrial wire and fixture assets, task generation, demonstration sources, learning policies, and physical robot evaluation.",
+      "caption": "The paper’s architecture diagram. Physical evaluation now covers all three task families, with results below."
+    },
+    "points": [
+      {
+        "title": "Configurable physical tasks",
+        "description": "Vary connector geometry and socket clearance, clip layout, or channel shape. The same task definitions are used to evaluate policy success."
+      },
+      {
+        "title": "Two wire representations",
+        "description": "Articulated rigid-body chains support parallel data generation; finite-element deformable wires model local bending and contact deformation."
+      },
+      {
+        "title": "Shared learning interfaces",
+        "description": "Reinforcement learning, imitation learning, and vision-language-action policies use task-specific observations. UR5 trajectories share a LeRobot v3.0 format."
+      }
+    ]
+  },
+  "results": {
+    "realSummary": "Adding simulated demonstrations improves observed task success on the physical UR5. The best mixture for each task increases success by 65 percentage points for insertion, 20 for routing, and 15 for seating, compared with real demonstrations alone.",
+    "realProtocol": "Action Chunking with Transformers (ACT) on a physical UR5 with a Robotiq 2F-85 gripper. Each task and data mixture is evaluated over 20 trials. Checkpoints are selected by lowest action error on held-out real episodes. Every mixture includes real demonstrations.",
+    "insertionMedia": {
+      "type": "image",
+      "src": "assets/media/insertion-results.webp",
+      "alt": "Simulated Ethernet-style insertion: privileged State PPO and SACfD exceed 92% insertion success; all image-based policies have a gap between reaching the socket and completing insertion.",
+      "caption": "Simulation · Ethernet-style connector, deformable wire, 3 mm socket clearance. Reach and insert are separate success metrics; error bars show standard deviation."
+    },
+    "scope": "The hardware study uses a UR5 with one fixture configuration per task and narrower randomization than simulation. Training-set size changes with data mixture, so these results do not isolate source diversity from data volume. They do not measure zero-shot transfer."
+  },
+  "bibtex": "@misc{zhu2026wirecraft,\n  title = {WireCraft: A Simulation Benchmark for Industrial DLO Manipulation},\n  author = {Chongyu Zhu and Ramy ElMallah and Hyegang Kim and Zachary Tang and Jiachen Rao and Artem Arutyunov and Seungyeon Ha and Chi-Guhn Lee},\n  year = {2026},\n  eprint = {2606.18097},\n  archivePrefix = {arXiv},\n  primaryClass = {cs.RO},\n  url = {https://arxiv.org/abs/2606.18097}\n}",
+  "releaseNote": "Research code is planned for release in early November 2026, before CoRL. Code and dataset download links will be added to the project repository."
+}
